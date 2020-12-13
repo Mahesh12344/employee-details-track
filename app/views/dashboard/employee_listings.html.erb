@@ -10,10 +10,12 @@
   	<%= link_to '<button type="button" class="btn btn-success">Generate CSV Report</button>'.html_safe, download_data_employees_path(employee_name: "#{params[:employee_name]}",advanced_search: true),{:style=>'position: relative;left: 649px;'} %>
 	</div>
 <%end%>
-
+<% if params[:advanced_search].present? %>
+  <b style="color:crimson;">Search Result for Employee Name:- <%= params[:employee_name] %></b>
+<%end%>
 <hr>
 <b>Registered Employee List</b>
-<b style="float:right;">Total Employees Count:- <%= @employees.size %></b>
+<b style="float:right;">All Employees Count:- <%= @total_count %></b>
 <br>
 <table id="example" class="table table-striped table-bordered" style="width:100%">
   <thead>
