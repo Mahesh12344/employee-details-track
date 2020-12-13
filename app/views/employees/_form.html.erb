@@ -4,9 +4,7 @@
   	<hr>
   	<%= form_for @employee, :url => employees_path, method: "post", html:{class: 'form-horizontal', role: 'form', multipart: 'true'}  do |f| %>
 		<div class="row">
-	      <!-- left column -->
 	      
-	      	<!-- edit form column -->
     	<div class="col-md-9">
         <%if flash[:error]%>
 					<div class="error_messages alert alert-danger"><%= flash[:error] %></div>
@@ -14,7 +12,6 @@
 				<%if flash[:success]%>
 					<div class="error_messages alert alert-success"><%= flash[:success] %></div>
 				<% end %>
-	       		<!-- <h3>Personal info</h3> -->
 
 		    <% if @employee.errors.any? %>
 		      <br>
