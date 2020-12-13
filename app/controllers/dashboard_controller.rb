@@ -6,7 +6,7 @@ class DashboardController < ApplicationController
 		else
 			employees = Employee.all
 		end
-		@employees = employees.paginate(:page => params[:page], :per_page => 10)
+		@employees = employees.paginate(:page => params[:page], :per_page => 5)
 	end
-	
+
 end

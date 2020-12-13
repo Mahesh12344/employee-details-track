@@ -2,7 +2,7 @@
 <%= form_tag '', :method => 'get', :class => 'form-inline', :autocomplete=>"off" do %>
  <%= hidden_field_tag :advanced_search, :true %>
   <div class="form-group mb-2">
-    <%= text_field_tag :employee_name,"", class: 'form-control', placeholder: 'Employee Name',style: 'width:100%;margin-right: 16px;' %>
+    <%= text_field_tag :employee_name,params[:employee_name], class: 'form-control', placeholder: 'Employee Name',style: 'width:100%;margin-right: 16px;' %>
   </div>
   <button type="submit" class="btn btn-primary mb-2">Search</button>&nbsp;&nbsp;
   <button type="reset" class="btn btn-secondary mb-2">Reset</button>
@@ -42,3 +42,5 @@
 <div class="pull-right">
 	<%= will_paginate @employees %>
 </div>
+
+<br><br>
