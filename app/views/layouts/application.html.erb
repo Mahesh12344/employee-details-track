@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EmployeeDetailTracking</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <%= render "layouts/navigation" %>
+
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
+
+    <div class="footer">
+      <p style="margin-top: 10px;"><h6 class="footer-content">EMPLOYEE DETAILS TRACKING - Copyright © 2020 All rights reserved</h6></p>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<br>
+<div class="container">
+    <h3 class="pseudo_border">Create New Employee</h3>
+  	<hr>
+  	<%= form_for @employee, :url => employees_path, method: "post", html:{class: 'form-horizontal', role: 'form', multipart: 'true'}  do |f| %>
+		<div class="row">
+	      <!-- left column -->
+	      
+	      	<!-- edit form column -->
+    	<div class="col-md-9">
+        <%if flash[:error]%>
+					<div class="error_messages alert alert-danger"><%= flash[:error] %></div>
+				<% end %>
+				<%if flash[:success]%>
+					<div class="error_messages alert alert-success"><%= flash[:success] %></div>
+				<% end %>
+	       		<!-- <h3>Personal info</h3> -->
+
+		    <% if @employee.errors.any? %>
+		      <br>
+		      <div class="error_messages alert alert-danger">
+		        <ul>
+		          <% for message in @employee.errors.full_messages %>
+		            <li><%= message %></li>
+		          <% end %>
+		        </ul>
+		      </div>
+		    <% end %>
+				<form>
+			  	<div class="form-row">
+				    <div class="form-group col-md-6">
+			      	<label>Employee ID</label><font color="#F8304D">*</font>
+			      	<%= f.text_field :employee_id, {class: 'form-control'}  %>
+				    </div>
+				    <div class="form-group col-md-6">
+			      	<label>Employee Name</label><font color="#F8304D">*</font>
+			      	<%= f.text_field :employee_name, {class: 'form-control'}  %>
+				    </div>
+					</div>
+					<div class="form-row">
+				    <div class="form-group col-md-6">
+			      	<label>Email Address</label>
+			      	<%= f.text_field :email_address, {class: 'form-control'}  %>
+				    </div>
+
+				    <div class="form-group col-md-6">
+			      	<label>Phone</label>
+			      	<%= f.number_field :phone, {class: 'form-control'}  %>
+				    </div>
+					</div>
+					<div class="form-row">
+				    <div class="form-group col-md-4">
+			      	<label>Date of Birth</label>
+			      	<%= f.date_field :date_of_birth, {class: 'form-control',max: Date.today} %>
+				    </div>
+				    <div class="form-group col-md-6">
+			      	<label>Upload Employee Image</label><br>
+			      	<%= f.file_field :image, class: 'form-control',type: :file,accept: "image/x-png,image/jpeg" %>
+				    </div>
+					</div>
+			  
+	        <div class="form-row">
+				    <div class="form-group col-md-6">
+				      	<input class="btn btn-primary" name="commit" type="submit" value="Save">
+				      	 <input type="reset" class="btn btn-default" value="Reset">
+				    </div>
+					</div>
+				</form>
+	    </div>
+		</div>
+	<%end%>
+</div>
+
+<style>
+	/* Chrome, Safari, Edge, Opera */
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+	  -webkit-appearance: none;
+	  margin: 0;
+	}
+
+	/* Firefox */
+	input[type=number] {
+	  -moz-appearance: textfield;
+	}
+</style>

@@ -1,0 +1,44 @@
+<br><br>
+<%= form_tag '', :method => 'get', :class => 'form-inline', :autocomplete=>"off" do %>
+ <%= hidden_field_tag :advanced_search, :true %>
+  <div class="form-group mb-2">
+    <%= text_field_tag :employee_name,"", class: 'form-control', placeholder: 'Employee Name',style: 'width:100%;margin-right: 16px;' %>
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Search</button>&nbsp;&nbsp;
+  <button type="reset" class="btn btn-secondary mb-2">Reset</button>
+  <div class="form-group mx-sm-3 mb-2">
+  	<%= link_to '<button type="button" class="btn btn-success">Generate CSV Report</button>'.html_safe, download_data_employees_path(employee_name: "#{params[:employee_name]}",advanced_search: true),{:style=>'position: relative;left: 649px;'} %>
+	</div>
+<%end%>
+
+<hr>
+<b>Registered Employee List</b>
+<br>
+<table id="example" class="table table-striped table-bordered" style="width:100%">
+  <thead>
+    <tr>
+    	<th></th>
+      <th>Employee ID</th>
+      <th>Employee Name</th>
+      <th>Email Address</th>
+      <th>Phone</th>
+      <th>Date of Birth</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% @employees.each do |employee| %>
+		  <tr>
+		  	<td><%= image_tag employee.image.present? ? employee.image.url(:thumb) : "default-profile-image.png",class: 'avatar img-circle', height: '46',width:'46' %></i><br></td>
+		    <td><%= employee.employee_id %></td>
+        <td><%= employee.employee_name %></td>
+		    <td><%= employee.email_address %></td>
+		    <td><%= employee.phone %></td>
+		    <td><%= employee.date_of_birth %></td>
+		  </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="pull-right">
+	<%= will_paginate @employees %>
+</div>
